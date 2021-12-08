@@ -5,6 +5,6 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {maximum: 255},
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: true  # case_sensitive: false，Rails 会自动指定 :uniqueness 的值为 true。
-
+  has_secure_password    # 对应的模型中有个名为 password_digest 的属性
 
 end
