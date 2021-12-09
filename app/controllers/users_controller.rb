@@ -8,6 +8,24 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      # 处理注册成功的情况
+    else
+      # todo
+
+    end
+
+  end
+
+  private
+
+  # 健壮参数
+    def user_params
+      params.require(:user).permit(:name, :email, :password,
+                                   :password_confirmation)
+    end
 
 
 end
